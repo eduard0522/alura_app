@@ -1,0 +1,18 @@
+.boton{
+  background-color: #6278F7;
+  border-radius: .6rem;
+  font-weight: 700;
+  padding: 1.5rem 2rem;
+  margin: 2rem 0;
+  cursor: pointer;
+  border: none;
+  color: #FFF;
+  border: 2px dashed #6278F7;
+  transition: all .5s ease;
+
+  &:hover{
+    background-color: #ffffff;
+    color: #6278F7;
+    transition: all .5s ease;
+  }
+}
