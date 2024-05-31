@@ -1,16 +1,18 @@
-import './CampoTexto.css'
+import './Campo.css'
 
- function CampoTexto(props) {
+ function Campo(props) {
 
     const manejarCambio = (e) => {
       props.actualizarValor(e.target.value)
     }
+
+    const {type = "text"} = props
     return( 
     <>
-      <div className="campoTexto">
+      <div className="campo">
         <label htmlFor="nombre"> {props.nombreCampo} </label>
           <input 
-            type="text" 
+            type={type} 
             id="nombre" 
             placeholder={props.placeholder}
             required={props.required} 
@@ -23,4 +25,4 @@ import './CampoTexto.css'
 
 }
 
-export default CampoTexto
+export default Campo

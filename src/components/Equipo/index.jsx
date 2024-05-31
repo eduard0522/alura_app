@@ -1,35 +1,33 @@
 import './Equipo.css'
+import hexToRgba from 'hex-to-rgba'
 import Colaborador from '../colaborador'
-import { useState } from 'react';
+
 export default function Equipo(props) {
 
-  
-  const{titulo,colorPrimario,colorSecundario,colaboradores,eliminarColaborador} = props;
+  const{titulo,colorPrimario,colaboradores,eliminarColaborador,cambiarColor,id,actualizarLike} = props;
+ 
   const estiloTitulo  = {
-   borderColor : colorPrimario
+    borderColor : colorPrimario
   }
-  const [color,setColor] = useState(colorSecundario)
 
   const estiloSecion  = {
-    backgroundColor : color
-   }
+    backgroundColor : hexToRgba(colorPrimario,0.4)
 
-   const manejadorColor = (e) => {
-    setColor(e.target.value)
-   }
+  }
 
    { if (colaboradores.length > 0) {
         return (
           <section className="equipo" style={estiloSecion}>
-              <input type="color" value={colorSecundario} className="color" onChange={manejadorColor}/>
+              <input type="color" value={colorPrimario} className="color" onChange={(e) => cambiarColor(e.target.value,id)}/>
               <h3 style={estiloTitulo}> {titulo} </h3>
               <div className="colaboradores"> 
                 {colaboradores.map((colaborador,i) =>  
                 <Colaborador
-                    key={i}
+                    key={colaborador.id}
                     datos={colaborador}  
                     color={colorPrimario} 
                     eliminarColaborador={eliminarColaborador}
+                    actualizarLike={actualizarLike}
                 />)}
               </div>
           </section>
